@@ -11,20 +11,20 @@ def get_data(split_percentage):
     #X_images,X_labels=load_mnist("testing",np.arange(10),".")
     print X_labels.shape,X_images.shape
     print X_labels[30]
-    X_images=np.reshape(X_images,(60000,784))
-    X_images=np.reshape(X_images,(60000,784))
+    X_images=np.reshape(X_images,(60000,28,28))
+    X_images=np.reshape(X_images,(60000,28,28))
     print X_labels.shape,X_images.shape
     test_image=np.reshape(X_images[30],(28,28))
     plt.imshow(test_image,cmap='gray')
     plt.show()
     #mnist = fetch_mldata("MNIST original")
     #X, y = mnist.data / 255., mnist.target
-    #num_train_rows=split_percentage*70000/100
-    #num_test_rows=70000-num_train_rows
-    #X_train, X_test = X[:num_train_rows], X[num_train_rows:]
-    #y_train, y_test = y[:num_train_rows], y[num_train_rows:]
-    #return X_train,X_test,y_train,y_test 
-    return [],[],[],[]
+    num_train_rows=split_percentage*70000/100
+    num_test_rows=70000-num_train_rows
+    X_train, X_test = X[:num_train_rows], X[num_train_rows:]
+    y_train, y_test = y[:num_train_rows], y[num_train_rows:]
+    return X_train,X_test,y_train,y_test 
+    #return [],[],[],[]
 def split_it_up(train_percentage):
     print "in routine split_it_up",train_percentage
     return 1
@@ -46,4 +46,4 @@ def classify(X_train,X_test,y_train,y_test):
 if __name__=="__main__":
     p=int(sys.argv[1])
     Xtr,Xte,ytr,yte=get_data(p)
-    #classify(Xtr,Xte,ytr,yte)
+    classify(Xtr,Xte,ytr,yte)

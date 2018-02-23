@@ -1,4 +1,4 @@
-for ((i=30;i<100;i+=5));do
+for ((i=30;i<100;i+=10));do
 #	echo $i
-    python project1.py $i
+    python project1_Main.py $i
 done
